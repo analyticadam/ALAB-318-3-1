@@ -202,7 +202,7 @@ app.patch("/api/vegetables/:id", (req, res) => {
 	}
 });
 
-// CREATE (FRUITS)
+// CREATE (FRUITS) with Redirect
 app.post("/api/fruits", (req, res) => {
 	if (!req.body.name || !req.body.color) {
 		return res.status(400).json({ error: "Name and color are required." });
@@ -212,6 +212,8 @@ app.post("/api/fruits", (req, res) => {
 	fruits.push(req.body);
 	// res.send('this was the post route');
 	res.json(fruits);
+	// Redirect to the fruits index to view the updated list
+	res.redirect("/api/fruits");
 });
 
 // ========== CREATE A NEW VEGETABLE ==========
@@ -219,6 +221,7 @@ app.post("/api/fruits", (req, res) => {
 // POST route to handle form submissions for adding vegetables
 // This route responds to POST requests at "/api/vegetables"
 // It expects a "name" and "color" in the request body and adds the new vegetable to the array
+// CREATE (VEGETABLES) with Redirect
 app.post("/api/vegetables", (req, res) => {
 	// Check if required fields (name and color) are provided
 	if (!req.body.name || !req.body.color) {
@@ -229,6 +232,7 @@ app.post("/api/vegetables", (req, res) => {
 	vegetables.push(req.body);
 	// res.send('this was the post route');
 	res.json(vegetables);
+	res.redirect("/api/vegetables");
 });
 
 // SHOW
