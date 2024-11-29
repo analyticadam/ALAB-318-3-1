@@ -95,9 +95,18 @@ app.get("/index", (req, res) => {
 	res.send("<h1>This is an index</h1>");
 });
 
-// Route to render the "New.jsx" form
+// Route to render the "New.jsx" form for Fruits
 app.get("/fruits/new", (req, res) => {
 	res.render("fruits/New", { title: "Add a New Fruit" });
+});
+
+// ========== RENDER FORM FOR VEGETABLES ==========
+
+// Route to render the "New.jsx" form for vegetables
+// This route responds to GET requests at "/vegetables/new"
+// It renders the New.jsx view, providing a form for adding a new vegetable
+app.get("/vegetables/new", (req, res) => {
+	res.render("vegetables/New", { title: "Add a New Vegetable" });
 });
 // ***** ABOVE HERE are NON-API routes
 
@@ -205,8 +214,16 @@ app.post("/api/fruits", (req, res) => {
 	res.json(fruits);
 });
 
-// CREATE (VEGETABLES)
+// ========== CREATE A NEW VEGETABLE ==========
+
+// POST route to handle form submissions for adding vegetables
+// This route responds to POST requests at "/api/vegetables"
+// It expects a "name" and "color" in the request body and adds the new vegetable to the array
 app.post("/api/vegetables", (req, res) => {
+	// Check if required fields (name and color) are provided
+	if (!req.body.name || !req.body.color) {
+		return res.status(400).json({ error: "Name and color are required." });
+	}
 	// you should check this when you first start, but then get rid of this console.log
 	// console.log(req.body);
 	vegetables.push(req.body);
