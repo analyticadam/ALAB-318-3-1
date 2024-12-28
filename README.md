@@ -2,11 +2,7 @@
 
 ## **Overview**
 
-This project is a full-stack CRUD (Create, Read, Update, Delete) application that manages a collection of fruits and vegetables. It features:
-
-- Server-side rendering for adding new items.
-- RESTful API routes for managing data.
-- Redirects for seamless user experience after form submissions.
+This project is a full-stack CRUD (Create, Read, Update, Delete) application that manages a collection of fruits and vegetables. It demonstrates server-side rendering, RESTful API design, and middleware integration. The project is designed for learning and practicing full-stack web development.
 
 ---
 
@@ -15,9 +11,9 @@ This project is a full-stack CRUD (Create, Read, Update, Delete) application tha
 - **Fruits and Vegetables Management**:
   - Add, view, update, delete, and partially update fruits and vegetables.
 - **RESTful API**:
-  - Separate endpoints for fruits and vegetables.
+  - Separate endpoints for fruits and vegetables with full CRUD operations.
 - **Forms**:
-  - User-friendly forms for adding new fruits and vegetables.
+  - User-friendly forms for adding new fruits and vegetables via server-side rendering.
 - **Error Handling**:
   - Clear JSON error responses for invalid inputs or missing data.
 
@@ -38,14 +34,12 @@ This project is a full-stack CRUD (Create, Read, Update, Delete) application tha
 
    ```bash
    git clone <repository-url>
-
    ```
 
 2. Navigate to the project directory:
 
    ```bash
    cd <project-directory>
-
    ```
 
 3. Install dependencies:
@@ -61,16 +55,19 @@ This project is a full-stack CRUD (Create, Read, Update, Delete) application tha
 
    ```bash
    node index.js
-
    ```
 
-2. Open your browser and test the following routes.
+2. Open your browser and test the following routes:
+
+   - [Home Page](http://localhost:3000/)
+   - [Fruits Form](http://localhost:3000/fruits/new)
+   - [Vegetables Form](http://localhost:3000/vegetables/new)
 
 ---
 
 ### **Routes**
 
-### **Rendered Views**
+#### **Rendered Views**
 
 | Method | Route             | Description                     |
 | ------ | ----------------- | ------------------------------- |
@@ -79,7 +76,7 @@ This project is a full-stack CRUD (Create, Read, Update, Delete) application tha
 | GET    | `/fruits/new`     | Form to add a new fruit         |
 | GET    | `/vegetables/new` | Form to add a new vegetable     |
 
-### **RESTful API**
+#### **RESTful API**
 
 | Method | Route                 | Description                        |
 | ------ | --------------------- | ---------------------------------- |
@@ -100,41 +97,49 @@ This project is a full-stack CRUD (Create, Read, Update, Delete) application tha
 
 ### **Technologies Used**
 
-Node.js: Backend runtime.
-Express: Web framework.
-express-react-views: For server-side rendering of JSX views.
-Body-Parser: Middleware for parsing incoming request bodies.
+- **Node.js**: Backend runtime.
+- **Express**: Web framework.
+- **express-react-views**: Server-side rendering of JSX views.
+- **Body-Parser**: Middleware for parsing incoming request bodies.
 
 ---
 
 ### **Testing**
 
-Using Postman or cURL
+#### Using Postman or cURL
+
 Test the RESTful API endpoints with JSON payloads.
 
 Example POST request to add a new fruit:
 
-````bash
+```bash
 curl -X POST http://localhost:3000/api/fruits \
      -H "Content-Type: application/json" \
      -d '{"name": "Apple", "color": "Red"}'
+```
 
-Browser
-Visit /fruits/new or /vegetables/new to add new items via forms.
+#### Browser
+
+Visit `/fruits/new` or `/vegetables/new` to add new items via forms.
 
 ---
 
 ### **Error Handling**
-Invalid IDs:
-```bash
-{ "error": "Invalid ID" }
-Missing Fields:
-```bash
-{ "error": "Name and color are required." }
+
+- **Invalid IDs**:
+  ```json
+  { "error": "Invalid ID" }
+  ```
+- **Missing Fields**:
+  ```json
+  { "error": "Name and color are required." }
+  ```
 
 ---
 
-### **Project Structure
+### **Project Structure**
+
+```
 ALAB-318-3-1/
 │
 ├── data/
@@ -150,16 +155,26 @@ ALAB-318-3-1/
 ├── index.js            # Main application file
 ├── package.json        # Dependencies and scripts
 └── README.md           # Project documentation
+```
 
 ---
 
 ### **Future Improvements**
-Add a front-end interface for displaying and interacting with the data.
-Implement database integration for persistent storage.
-Add user authentication for data management.
+
+- Add a front-end interface for displaying and interacting with the data.
+- Implement database integration for persistent storage.
+- Add user authentication for data management.
+- Enhance API responses with additional metadata.
+
+---
+
+### **Known Issues**
+
+- Currently, data is stored in memory and will reset upon server restart.
+- Limited front-end interactivity.
 
 ---
 
 ### **Author**
+
 Adam Farley - Developer of the project
-````
